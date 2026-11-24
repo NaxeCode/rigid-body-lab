@@ -116,3 +116,6 @@ footer {color:var(--muted); border-top:1px solid var(--line); font-size:.77rem; 
   .stage-head,.stage-foot {inset-inline:8px}.stage-foot {bottom:4px}
   .measurements {gap:23px}.time-state {font-size:.72rem}.stage {height:288px}
 }
+
+.orbit-pad {display:flex; gap:3px}
+.orbit-pad button {width:36px; height:36px; font-size:1rem; font-weight:600; text-decoration:none; border:1px solid #acb8bb; background:#f6f8f6}

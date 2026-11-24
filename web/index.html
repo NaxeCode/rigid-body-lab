@@ -23,7 +23,12 @@
       <div class="stage">
         <div class="stage-head"><h2 id="viewport-title">Rotor view</h2><span id="clock">0.000 s</span></div>
         <canvas id="scene" tabindex="0" aria-label="Perspective view of the spinning rotor. Drag to orbit, use arrow keys to rotate the camera, and press Home to restore the view." aria-describedby="scene-description">The attitude trace below reports each rotor’s orientation.</canvas>
-        <div class="stage-foot"><span>Drag to orbit <span aria-hidden="true">/</span> arrow keys</span><button type="button" id="view-reset">Reset view</button></div>
+        <div class="stage-foot"><div class="orbit-pad" role="group" aria-label="Orbit camera">
+          <button type="button" data-orbit="ArrowLeft" aria-label="Orbit left">←</button>
+          <button type="button" data-orbit="ArrowRight" aria-label="Orbit right">→</button>
+          <button type="button" data-orbit="ArrowUp" aria-label="Orbit up">↑</button>
+          <button type="button" data-orbit="ArrowDown" aria-label="Orbit down">↓</button>
+        </div><button type="button" id="view-reset">Reset view</button></div>
       </div>
       <div class="transport">
         <button type="button" class="primary" id="play"><span class="play-mark" aria-hidden="true"></span><span id="play-label">Release rotor</span></button>

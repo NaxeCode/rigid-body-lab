@@ -160,8 +160,11 @@ function orbit(yaw, pitch) {
 }
 const home = () => { camera = defaultCamera(); render(); };
 get('view-reset').addEventListener('click', home);
+const moves = { ArrowLeft: [-0.12, 0], ArrowRight: [0.12, 0], ArrowUp: [0, 0.1], ArrowDown: [0, -0.1] };
+for (const control of document.querySelectorAll('[data-orbit]')) {
+  control.addEventListener('click', () => orbit(...moves[control.dataset.orbit]));
+}
 scene.addEventListener('keydown', event => {
-  const moves = { ArrowLeft: [-0.12, 0], ArrowRight: [0.12, 0], ArrowUp: [0, 0.1], ArrowDown: [0, -0.1] };
   if (event.key === 'Home') home();
   else if (moves[event.key]) orbit(...moves[event.key]);
   else return;

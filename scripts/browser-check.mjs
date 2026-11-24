@@ -40,6 +40,12 @@ try {
   await click('step'); assert.equal(await read('clock'), '0.004 s');
   await click('reset'); assert.equal(await read('clock'), '0.000 s');
   const initial = await sceneImage();
+  for (const direction of ['left', 'right', 'up', 'down']) {
+    await page.getByRole('button', {name: 'Orbit '+direction}).click();
+    assert.notEqual(await sceneImage(), initial, 'camera button: '+direction);
+    await click('view-reset');
+    assert.equal(await sceneImage(), initial);
+  }
   await page.locator('#scene').focus(); await page.keyboard.press('ArrowRight');
   assert.notEqual(await sceneImage(), initial);
   await page.keyboard.press('Home');
