@@ -97,6 +97,20 @@ try {
   assert.ok(await evidenceLink.isVisible());
   const data = await (await page.request.get(new URL(await evidenceLink.getAttribute('href'), page.url()).href)).json();
   assert.equal(data.rotor.length, 9);
+  // The hosted experiment has portfolio navigation ahead of the standalone document.
+  await page.evaluate(() => {
+    const header = document.createElement('header');
+    header.style.height = '34px';
+    document.body.prepend(header);
+    window.scrollTo(0, 0);
+  });
+  const skip = page.getByRole('link', { name: 'Skip to experiment' });
+  assert.ok(await skip.evaluate(link => link.getBoundingClientRect().bottom <= 0),
+    'The unfocused skip link covers the host navigation');
+  await skip.focus();
+  assert.ok(await skip.evaluate(link => link.getBoundingClientRect().top >= 0));
+  await skip.press('Enter');
+  assert.equal(new URL(page.url()).hash, '#experiment');
   assert.deepEqual(remote, []); assert.deepEqual(errors, []);
   console.log('PASS '+engine+': nested static path, reduced-motion launch, single step, pause/resume/reset, orbit and home, three concurrent traces, live drift, nudge and spin controls, benchmark link, no external requests or browser errors, 320–1280 px overflow checks.');
 } finally {
