@@ -2,7 +2,7 @@
 
 Release the rotor, watch its orange marker swing toward the opposite pole, then select a different axis at the same instant. This browser experiment runs three torque-free launches side by side in time. Their shared alignment plot shows which rotations survive a small perturbation.
 
-[Open the experiment](https://naxe-portfolio-review.vercel.app/labs/rigid-body/) · [Inspect the solver](web/physics.mjs) · [Measured results](web/benchmark.json)
+[Open the experiment](https://naxe.dev/labs/rigid-body/?utm_source=github&utm_medium=readme&utm_campaign=portfolio&utm_content=rigid-body) · [Inspect the solver](web/physics.mjs) · [Measured results](web/benchmark.json)
 
 ![The blue three-block rotor in a perspective view above a circular orientation reference, with launch controls and simultaneous alignment traces.](evidence/desktop.png)
 
